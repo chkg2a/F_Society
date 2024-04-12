@@ -22,7 +22,7 @@ function App() {
       <Route path='/crowdfunding' element={<Crowdfunding />} />
       <Route path='/report' element={<Report />} />
       <Route element={<ProtectedRoute />}>
-      <Route path='/profile' element={<Profile />} />
+        <Route path='/profile' element={<Profile />} />
       </Route>
     </Routes>
   </BrowserRouter>
