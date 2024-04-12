@@ -11,7 +11,7 @@ import {
   uploadBytesResumable,
 } from "firebase/storage";
 import React from "react";
-import Friends from "../assets/images/friends.svg"
+import Friends from "../assets/images/friends.svg";
 
 const Report = () => {
   const { loading, error } = useSelector((state) => state.user);
@@ -24,6 +24,20 @@ const Report = () => {
   const [formData, setFormData] = useState({});
   console.log(file);
   const fileRef = useRef(null);
+
+  const [currLocationJs, setCurrLocationJs] = useState({});
+
+  useEffect(() => {
+    getLocationJs();
+  }, []);
+
+  const getLocationJs = () => {
+    navigator.geolocation.getCurrentPosition((position) => {
+      console.log(position);
+      const { latitude, longitude } = position.coords;
+      setCurrLocationJs({ latitude, longitude });
+    });
+  };
   useEffect(() => {
     if (file) {
       handleFileUpload(file);
@@ -78,14 +92,14 @@ const Report = () => {
     <div className="bg-slate-700 w-screen h-screen flex-col flex items-center justify-center">
       <div className="h-[80%] flex justify-center items-center">
         <div>
-          <img src={Friends}/>
+          <img src={Friends} />
         </div>
 
         <div className="flex flex-col items-center justify-center min-w-96 mx-auto">
           <div className="w-full p-6 rounded-lg shadow-md bg-gray-400 bg-clip-padding backdrop-filter backdrop-blur-lg bg-opacity-0">
             <h1 className="text-3xl font-semibold text-center text-gray-300">
               File
-              <span className="text-blue-300">a Report</span>
+              <span className="text-blue-300"> a Report</span>
             </h1>
             <form onSubmit={handleSubmit}>
               <div>
@@ -97,13 +111,13 @@ const Report = () => {
                 <input
                   onChange={(e) => setFile(e.target.files[0])}
                   type="file"
-                  className="block"
+                  className="block file-input file-input-bordered w-full max-w-xs"
                   ref={fileRef}
-                    hidden
-                    accept="image/*"
-                  />
-                </div>
-                <div>
+                  hidden
+                  accept="image/*"
+                />
+              </div>
+              <div>
                 <p className="text-sm self-center">
                   {fileUploadError
                     ? (
@@ -134,40 +148,51 @@ const Report = () => {
                     Location
                   </span>
                 </label>
+                <div className="flex">
                 <input
                   type="text"
-                  id="location"
-                  placeholder="Enter location"
+                  id="location-lati"
+                  placeholder="Enter latitude"
+                  value={currLocationJs.latitude}
                   className="w-full input input-bordered h-10"
                   onChange={handleChange}
+                  required
                 />
+                <input
+                  type="text"
+                  id="location-long"
+                  placeholder="Enter logitude"
+                  value={currLocationJs.longitude}
+                  className="w-full input input-bordered h-10"
+                  onChange={handleChange}
+                  required
+                />
+
+                </div>
+                {currLocationJs ? <p className="text-success">Successfully Got your Location</p> : (
+                <button onClick={getLocationJs} className="btn btn-ghost">Get Location</button>
+                )}
               </div>
               <div>
                 <label className="label p-2">
-                  <span className="text-base label-text">
-                    Description 
+                  <span className="text-base text-blue-300 label-text">
+                    Description
                   </span>
                 </label>
                 <input
                   type="text"
-                  id="location"
+                  id="description"
                   placeholder="Enter description"
                   className="w-full input input-bordered h-10"
                   onChange={handleChange}
+                  required
                 />
               </div>
-              <Link
-                to="/sign-up"
-                className="text-sm text-blue-300 hover:underline hover:text-blue-600 mt-2 inline-block"
-              >
-                {"Don't"} have an account?
-              </Link>
               <div>
                 <button
-                  disabled={loading}
-                  className="btn btn-block btn-sm mt-2 border disabled:opacity-80 border-slate-700"
+                  className="btn btn-block btn-sm btn-error mt-2 border disabled:opacity-80 border-slate-700"
                 >
-                  Login
+                  REPORT
                 </button>
               </div>
               <div>
@@ -179,10 +204,9 @@ const Report = () => {
       </div>
       <div className="w-full flex justify-center items-center">
         <ul className="steps steps-vertical lg:steps-horizontal">
-          <li className="step step-primary">Register</li>
-          <li className="step step-primary">Choose plan</li>
-          <li className="step">Purchase</li>
-          <li className="step">Receive Product</li>
+          <li className="step step-primary">Write your Report</li>
+          <li className="step step-primary">Connect with an Organization</li>
+          <li className="step">Chat With An Organization</li>
         </ul>
       </div>
     </div>

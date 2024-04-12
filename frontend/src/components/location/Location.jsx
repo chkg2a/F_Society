@@ -2,18 +2,6 @@ import React from 'react'
 import {useState,useEffect} from 'react'
 
 const Location = () => {
-    const [currLocationJs, setCurrLocationJs] = useState({});
-
-    useEffect(()=>{
-        getLocationJs();
-    },[])
-    const getLocationJs = () => {
-        navigator.geolocation.getCurrentPosition((position) => {
-          console.log(position);
-          const { latitude, longitude } = position.coords;
-          setCurrLocationJs({ latitude, longitude });
-        });
-      };
   return (
     <div>
       <>

@@ -15,17 +15,15 @@ const Home = () => {
           <div className="hero-overlay bg-opacity-60"></div>
           <div className="hero-content text-center text-neutral-content">
             <div className="max-w-md">
-              <h1 className="mb-5 text-5xl font-bold">Hello there</h1>
+              <h1 className="mb-5 text-5xl font-bold">We want to Survive!</h1>
               <p className="mb-5">
-                Provident cupiditate voluptatem et in. Quaerat fugiat ut
-                assumenda excepturi exercitationem quasi. In deleniti eaque aut
-                repudiandae et a id nisi.
+
               </p>
               <Link to="/report" className="btn btn-error">REPORT</Link>
             </div>
           </div>
         </div>
-        <div className="w-[80vw] flex items-center justify-center">
+        <div className="p-40 w-screen flex items-center justify-center bg-slate-600">
           <Timeline/>
         </div>
       </div>

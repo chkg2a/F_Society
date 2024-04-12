@@ -1,9 +1,11 @@
 import { useEffect, useRef, useState } from "react";
 import { useSelector } from "react-redux";
 import app from "../components/Fire";
-import { signOutUserStart, deleteUserFailure,
+import {
+  signOutUserStart, deleteUserFailure,
   deleteUserStart,
-  deleteUserSuccess } from "../redux/userSlice";
+  deleteUserSuccess
+} from "../redux/userSlice";
 import {
   getDownloadURL,
   getStorage,
@@ -11,6 +13,7 @@ import {
   uploadBytesResumable,
 } from "firebase/storage";
 import { useDispatch } from "react-redux";
+
 const Profile = () => {
   const { currentUser } = useSelector((state) => state.user);
   const [file, setFile] = useState(undefined);
@@ -18,7 +21,7 @@ const Profile = () => {
   const [fileUploadError, setFileUploadError] = useState(false);
   const [formData, setFormData] = useState({});
   console.log(file);
-  const dispatch=useDispatch();
+  const dispatch = useDispatch();
   const fileRef = useRef(null);
   useEffect(() => {
     if (file) {
@@ -43,12 +46,12 @@ const Profile = () => {
     });
 
   };
-  const handleSignout=async()=>{
+  const handleSignout = async () => {
     try {
       dispatch(signOutUserStart());
-      const res=await fetch("http://localhost:8000/api/auth/sign-out");
-      const data=await res.json();
-      if(data.success===false){
+      const res = await fetch("http://localhost:8000/api/auth/sign-out");
+      const data = await res.json();
+      if (data.success === false) {
         dispatch(deleteUserFailure(data.message));
         return;
       }
@@ -57,9 +60,12 @@ const Profile = () => {
     }
   }
   return (
-    <div className="flex w-screen bg-slate-700">
-      <div>
-      </div>
+    <div className="flex h-screen w-screen bg-slate-700" style={{
+      backgroundImage: "url(/pattern.svg)",
+      backgroundRepeat: "no-repeat",
+      backgroundPosition: "center",
+      backgroundSize: "cover",
+    }}>
       <div className="flex w-1/2 flex-col items-center justify-center">
         <h1 className="text-3xl font-semibold text-center my-7">Profile</h1>
         <form className="flex flex-col gap-4">
@@ -67,6 +73,7 @@ const Profile = () => {
             onChange={(e) => setFile(e.target.files[0])}
             type="file"
             ref={fileRef}
+            className="block file-input file-input-bordered w-full max-w-xs"
             hidden
             accept="image/*"
           />
