@@ -5,3 +5,27 @@
 body{
     background-color: rgb(241, 245, 241);
 }
+
+::-webkit-scrollbar {
+  cursor: pointer;
+  width: 0px;
+}
+
+::-webkit-scrollbar-track {
+  background: #1d232a;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(90deg,
+      rgba(2, 0, 36, 1) 0%,
+      rgba(121, 9, 105, 1) 53%,
+      rgba(2, 0, 36, 1) 100%);
+  border-radius: 20px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(90deg,
+      rgba(2, 0, 36, 1) 0%,
+      rgba(121, 9, 105, 1) 53%,
+      rgba(2, 0, 36, 1) 100%);
+}

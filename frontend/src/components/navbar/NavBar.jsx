@@ -60,7 +60,7 @@ const NavBar = () => {
             <Link to="/crowdfunding">Crowdfunding</Link>
           </li>
           <li>
-            <Link to="/contact">Contact</Link>
+            <Link to="/joinorg">Join Organization</Link>
           </li>
         </ul>
       </div>
@@ -104,6 +104,14 @@ const NavBar = () => {
           )
           : <LoginComp />}
       </div>
+    </div>
+  );
+};
+
+const ConnectComp = () => {
+  return (
+    <div className="px-5 btn-ghost">
+      Login
     </div>
   );
 };
