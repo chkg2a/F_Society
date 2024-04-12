@@ -83,10 +83,3 @@ export const signout=async(req,res,next)=>{
 }
 
 
-export const report=async(req,res,next)=>{
-    try {
-        
-    } catch (error) {
-        console.log(error)
-    }
-}

@@ -192,6 +192,9 @@ const Report = () => {
               </div>
               <div>
                 <button
+                  onClick={()=>{
+                    navigate('/crowdfunding')
+                  }}
                   className="btn btn-block btn-sm btn-error mt-2 border disabled:opacity-80 border-slate-700"
                 >
                   REPORT
