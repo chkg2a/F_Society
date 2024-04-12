@@ -8,6 +8,10 @@ const NavBar = () => {
   const { currentUser } = useSelector((state) => state.user);
   console.log(currentUser);
 
+  const handleLogOut = async() => {
+    await fetch('http://localhost:8000/api/auth/logout')
+  }
+
   return (
     <div className="navbar bg-base-100">
       <div className="navbar-start">
@@ -96,7 +100,7 @@ const NavBar = () => {
                     <Link to="/settings">Settings</Link>
                   </li>
                   <li>
-                    <Link to="/api/auth/logout">Logout</Link>
+                    <button onClick={handleLogOut}>Logout</button>
                   </li>
                 </ul>
               </div>

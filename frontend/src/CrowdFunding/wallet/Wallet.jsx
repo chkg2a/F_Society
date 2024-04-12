@@ -44,16 +44,30 @@ const Wallet = ({ children }) => {
   return (
     <>
       <Web3Context.Provider value={state}>{children}</Web3Context.Provider>
+      <div className="absolute mt-5 mr-5 top-0 text-slate-600 right-0">
+        {state.selectedAccount
+          ? (
+            <h1>Connected Account: {state.selectedAccount}</h1>
+          )
+          : (
+            <button
+              onClick={handleWallet}
+              className="btn btn-block btn-sm mt-2 border disabled:opacity-80 border-slate-700"
+            >
+              Connect Wallet
+            </button>
+          )}
+      </div>
       <div className="h-[80%] flex justify-center items-center">
-        <div className="flex flex-col items-center justify-center min-w-96 mx-auto">
+        <div className="flex flex-col items-center justify-center min-w-[50rem] mx-auto">
           <div className="w-full p-6 rounded-lg shadow-md bg-gray-400 bg-clip-padding backdrop-filter backdrop-blur-lg bg-opacity-0">
-            <h1 className="text-3xl font-semibold text-center text-gray-300">
+            <h1 className="text-6xl font-semibold text-center text-gray-300">
               Join Organization
             </h1>
             <form onSubmit={handleSubmit}>
               <div>
                 <label className="label p-2">
-                  <span className="text-base label-text">
+                  <span className="text-xl label-text">
                     Organization Name
                   </span>
                 </label>
@@ -69,7 +83,7 @@ const Wallet = ({ children }) => {
               </div>
               <div>
                 <label className="label p-2">
-                  <span className="text-base label-text">Description</span>
+                  <span className="text-xl label-text">Description</span>
                 </label>
 
                 <input
@@ -83,8 +97,8 @@ const Wallet = ({ children }) => {
               </div>
               <div>
                 <label className="label p-2">
-                  <span className="text-base text-blue-300 label-text">
-                    Password
+                  <span className="text-xl label-text">
+                    Wallet Address
                   </span>
                 </label>
 
@@ -112,7 +126,7 @@ const Wallet = ({ children }) => {
                       type="submit"
                       className="btn btn-block btn-sm mt-2 border disabled:opacity-80 border-slate-700"
                     >
-                      Add Organization
+                      <span className="text-2xl">Add Organization</span>
                     </button>
                   )
                   : (
@@ -120,7 +134,7 @@ const Wallet = ({ children }) => {
                       onClick={handleWallet}
                       className="btn btn-block btn-sm mt-2 border disabled:opacity-80 border-slate-700"
                     >
-                      Connect Wallet
+                      <span className="text-2xl">Connect Wallet</span>
                     </button>
                   )}
               </div>
