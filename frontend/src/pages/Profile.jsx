@@ -60,7 +60,7 @@ const Profile = () => {
     }
   }
   return (
-    <div className="flex h-screen w-screen bg-slate-700" style={{
+    <div className="flex h-screen w-screen bg-slate-700 justify-center items-center" style={{
       backgroundImage: "url(/pattern.svg)",
       backgroundRepeat: "no-repeat",
       backgroundPosition: "center",
@@ -130,13 +130,13 @@ const Profile = () => {
             Update
           </button>
         </form>
-        <div className="flex justify-between mt-5">
-          <span className="text-red-700 cursor-pointer">
+        <div className="flex justify-evenly mt-5">
+          <div className="text-red-700 cursor-pointer">
             Delete account
-          </span>
-          <span className="text-red-700 cursor-pointer">
+          </div>
+          <div className="text-red-700 cursor-pointer">
             Sign out
-          </span>
+          </div>
         </div>
       </div>
     </div>

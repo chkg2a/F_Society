@@ -8,9 +8,9 @@ const NavBar = () => {
   const { currentUser } = useSelector((state) => state.user);
   console.log(currentUser);
 
-  const handleLogOut = async() => {
-    await fetch('http://localhost:8000/api/auth/logout')
-  }
+  const handleLogOut = async () => {
+    await fetch("http://localhost:8000/api/auth/logout");
+  };
 
   return (
     <div className="navbar bg-base-100">
@@ -50,12 +50,19 @@ const NavBar = () => {
             </li>
           </ul>
         </div>
-        <Link to="/" className="btn btn-ghost text-xl"><img src="/logo.png" alt='logo' className="w-full h-10 w-auto"/>AnimalRescue</Link>
+          <Link to="/" className="btn btn-ghost text-xl">
+            <img
+              src="/logo.png"
+              alt="logo"
+              className="h-10 w-auto"
+            />
+            <p>AnimalRescue</p>
+          </Link>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">
           <li>
-            <Link to="/about">About</Link>
+            <Link to="/chat">Chat</Link>
           </li>
           <li>
             <Link to="/blog">Blog</Link>

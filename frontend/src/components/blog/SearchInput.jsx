@@ -2,8 +2,8 @@ import React from "react";
 
 const SearchInput = () => {
   return (
-    <div>
-      <div className="join">
+    <div className="">
+      <div className="join w-1/2">
         <div>
           <div>
             <input
@@ -14,9 +14,9 @@ const SearchInput = () => {
         </div>
         <select className="select select-bordered join-item">
           <option disabled selected>Filter</option>
-          <option>Sci-fi</option>
-          <option>Drama</option>
-          <option>Action</option>
+          <option>Recent</option>
+          <option>Nearby</option>
+          <option>Oldest</option>
         </select>
         <div className="indicator">
           <span className="indicator-item badge badge-secondary">new</span>
