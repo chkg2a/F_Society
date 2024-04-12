@@ -1,12 +1,16 @@
 import { useEffect, useRef, useState } from "react";
 import { useSelector } from "react-redux";
 import app from "../components/Fire";
+import { signOutUserStart, deleteUserFailure,
+  deleteUserStart,
+  deleteUserSuccess } from "../redux/userSlice";
 import {
   getDownloadURL,
   getStorage,
   ref,
   uploadBytesResumable,
 } from "firebase/storage";
+import { useDispatch } from "react-redux";
 const Profile = () => {
   const { currentUser } = useSelector((state) => state.user);
   const [file, setFile] = useState(undefined);
@@ -14,6 +18,7 @@ const Profile = () => {
   const [fileUploadError, setFileUploadError] = useState(false);
   const [formData, setFormData] = useState({});
   console.log(file);
+  const dispatch=useDispatch();
   const fileRef = useRef(null);
   useEffect(() => {
     if (file) {
@@ -36,7 +41,21 @@ const Profile = () => {
         setFormData({ ...formData, avatar: downloadURL })
       );
     });
+
   };
+  const handleSignout=async()=>{
+    try {
+      dispatch(signOutUserStart());
+      const res=await fetch("http://localhost:8000/api/auth/sign-out");
+      const data=await res.json();
+      if(data.success===false){
+        dispatch(deleteUserFailure(data.message));
+        return;
+      }
+    } catch (error) {
+      dispatch(deleteUserFailure(data.message));
+    }
+  }
   return (
     <div>
       <div>
