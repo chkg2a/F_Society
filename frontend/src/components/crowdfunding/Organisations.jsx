@@ -22,7 +22,7 @@ const Organisations = () => {
         alert("please select an account");
       }
       provider=new ethers.BrowserProvider(window.ethereum);
-      const contractAddress="0x58105f09ac9ad5aae92dd62e7aa8f0aadc8c79e1";
+      const contractAddress="0xDBd7CE3B3Be88a212956Cdf7cA304DE8653A0653";
       setAccount(selectedAccount)
       signer=await provider.getSigner();
       contract=new Contract(contractAddress,ABI,signer);
@@ -63,10 +63,15 @@ const Organisations = () => {
       {orgs.map((org, index) => (
         <Organisation
           key={index}
+          wid={org[0]}
           image={org[4] ? org[4] : "/who.png"}
           title={org[1]}
           description={org[2]}
           wallet={org[3]}
+          contract={contract}
+          signer={signer}
+          selectedAccount={selectedAccount}
+          provider={provider}
         />
       ))}
     </div>

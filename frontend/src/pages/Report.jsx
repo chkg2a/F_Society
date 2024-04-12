@@ -44,19 +44,21 @@ const Report = () => {
     }
   }, [file]);
   const handleChange = (e) => {
-    setFormData({ ...form, [e.target.id]: e.target.value });
+    setFormData({ ...formData, [e.target.id]: e.target.value });
   };
+
 
   const handleSubmit = async (e) => {
     dispatch(signInStart());
     e.preventDefault();
+    console.log(formData);
     try {
       const res = await fetch("http://localhost:8000/api/auth/alert", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(form),
+        body: JSON.stringify(formData),
       });
       const data = await res.json();
       if (data.success === false) {

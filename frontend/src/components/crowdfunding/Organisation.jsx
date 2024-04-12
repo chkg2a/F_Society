@@ -1,34 +1,50 @@
 import React from "react";
+import {ethers} from "ethers";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { Contract } from "ethers";
+import ABI from "./ABI.json"
 
 const Organisation = (props) => {
   const [form, setFormData] = useState({});
   const navigate = useNavigate();
-
+ 
+ 
   const handleChange = (e) => {
+    e.preventDefault();
     setFormData({ ...form, [e.target.id]: e.target.value });
   };
-
-  const handleSubmit = async (e) => {
+  const handleDonate=async(e)=>{
+    e.preventDefault();
     try {
-      const res = await fetch("http://localhost:8000/api/auth/send", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(form),
-      });
-      const data = await res.json();
-      if (data.success === false) {
-        return;
+      if(window.ethereum == null){
+        alert("please install metamask");
       }
-      dispatch(signInSuccess(data));
-      navigate("/joinorg");
+      let accounts=await window.ethereum.request({method:"eth_requestAccounts"});
+    const  selectedAccount=accounts[0];
+      if(!selectedAccount){
+        alert("please select an account");
+      }
+   const   provider=new ethers.BrowserProvider(window.ethereum);
+       const     signer=await provider.getSigner();
+      const contractAddress="0xDBd7CE3B3Be88a212956Cdf7cA304DE8653A0653";
+      const contract=new Contract(contractAddress,ABI,signer);
+
+      const amount=document.getElementById("amount").value;
+      const amountTo=await ethers.parseUnits(amount,18).toString();
+      console.log(amountTo)
+      const id=Number(props.wid);
+      console.log(id)
+      const tx = await contract.sendFund(id, amountTo);
+      await tx.wait();
+      alert("Donation Successful");
+
+
     } catch (error) {
-      console.error("Error:", error);
+      console.log(error)
     }
-  };
+  }
+
   return (
     <div className="card card-compact w-96 bg-base-100 shadow-xl">
       <figure>
@@ -50,21 +66,7 @@ const Organisation = (props) => {
           </button>
           <dialog id="my_modal_2" className="modal">
             <div className="modal-box">
-              <form onSubmit={handleSubmit}>
-                <div className="hidden">
-                  <label className="label p-2">
-                    <span className="text-xl label-text">
-                      Id
-                    </span>
-                  </label>
-                  <input
-                    type="number"
-                    id="id"
-                    placeholder="Enter ID"
-                    className="w-full hidden input input-bordered h-15"
-                    onChange={handleChange}
-                  />
-                </div>
+              <form>
                 <div>
                   <label className="label p-2">
                     <span className="text-xl label-text">
@@ -79,8 +81,8 @@ const Organisation = (props) => {
                     onChange={handleChange}
                   />
                 </div>
-                <div clsasName="flex">
-                  <button
+                <div className="flex">
+                  <button onClick={handleDonate}
                     className="btn btn-block btn-sm mt-2 border disabled:opacity-80 border-slate-700"
                   >
                     Donate
