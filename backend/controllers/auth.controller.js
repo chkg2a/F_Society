@@ -81,3 +81,12 @@ export const signout=async(req,res,next)=>{
         next(error);
     }
 }
+
+
+export const report=async(req,res,next)=>{
+    try {
+        
+    } catch (error) {
+        console.log(error)
+    }
+}
