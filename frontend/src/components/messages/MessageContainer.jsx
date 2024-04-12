@@ -4,7 +4,7 @@ import { TiMessages } from "react-icons/ti";
 import MessageInput from "./MessageInput";
 
 const MessageContainer = () => {
-  const orgName = "The Sushi"
+  const orgName = ""
   const noChatSelected = false;
   return (
     <div className="w-screen lg:min-w-[80vw] flex flex-col">

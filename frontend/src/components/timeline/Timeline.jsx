@@ -1,4 +1,3 @@
-
 const Timeline = () => {
   return (
     <div className="w-[90vw] lg:w-[75vw]">
@@ -21,6 +20,9 @@ const Timeline = () => {
           <div className="timeline-start md:text-end mb-10">
             <time className="font-mono italic">$ 1000</time>
             <div className="text-4xl font-black">Expansion</div>
+            Hey there! When we will reach our target goal, Let's pledge to help
+            them to ease their pain not just in Arunachal Pradesh but in the
+            entire North East region.
           </div>
           <hr />
         </li>
