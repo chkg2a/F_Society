@@ -183,7 +183,7 @@ const Report = () => {
                   type="text"
                   id="description"
                   placeholder="Enter description"
-                  className="w-full input input-bordered h-10"
+                  className="w-full textarea input input-bordered h-10"
                   onChange={handleChange}
                   required
                 />
@@ -201,13 +201,6 @@ const Report = () => {
           </div>
           {error && <p className="text-red-500">{error}</p>}
         </div>
-      </div>
-      <div className="w-full flex justify-center items-center">
-        <ul className="steps steps-vertical lg:steps-horizontal">
-          <li className="step step-primary">Write your Report</li>
-          <li className="step step-primary">Connect with an Organization</li>
-          <li className="step">Chat With An Organization</li>
-        </ul>
       </div>
     </div>
   );
