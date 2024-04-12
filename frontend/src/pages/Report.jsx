@@ -36,7 +36,7 @@ const Report = () => {
     dispatch(signInStart());
     e.preventDefault();
     try {
-      const res = await fetch("http://localhost:8000/api/auth/sign-in", {
+      const res = await fetch("http://localhost:8000/api/auth/alert", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -49,7 +49,7 @@ const Report = () => {
         return;
       }
       dispatch(signInSuccess(data));
-      navigate("/");
+      navigate("/chat");
     } catch (error) {
       console.error("Error:", error);
       dispatch(signInFailure(error.message));
@@ -84,31 +84,21 @@ const Report = () => {
             </h1>
             <form onSubmit={handleSubmit}>
               <div>
+                <label className="label p-2">
+                  <span className="text-base text-blue-300 label-text">
+                    Upload Image
+                  </span>
+                </label>
                 <input
                   onChange={(e) => setFile(e.target.files[0])}
                   type="file"
+                  className="block"
                   ref={fileRef}
                     hidden
                     accept="image/*"
                   />
                 </div>
                 <div>
-                  <label className="label p-2">
-                  <span className="text-base label-text">File Report</span>
-                </label>
-                <input
-                  onChange={(e) => setFile(e.target.files[0])}
-                  type="file"
-                  ref={fileRef}
-                  hidden
-                  accept="image/*"
-                />
-                <img
-                  src={formData.avatar}
-                  onClick={() => fileRef.current.click()}
-                  alt="profile"
-                  className="rounded-full h-24 w-24 object-cover cursor-pointer self-center mt-2"
-                />
                 <p className="text-sm self-center">
                   {fileUploadError
                     ? (
@@ -136,7 +126,7 @@ const Report = () => {
               <div>
                 <label className="label p-2">
                   <span className="text-base text-blue-300 label-text">
-                    Password
+                    Location
                   </span>
                 </label>
                 <input
@@ -149,8 +139,8 @@ const Report = () => {
               </div>
               <div>
                 <label className="label p-2">
-                  <span className="text-base text-blue-300 label-text">
-                    Password
+                  <span className="text-base label-text">
+                    Description 
                   </span>
                 </label>
                 <input
