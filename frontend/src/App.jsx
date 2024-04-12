@@ -17,6 +17,7 @@ import ProtectedRoute from "./components/ProtectedRoute";
 import ConnectWallet from "./pages/ConnectWallet";
 import JoinOrganization from "./pages/JoinOrganization";
 import ChatUi from "./pages/chat/ChatUi"
+import Location from "./components/location/Location";
 
 function App() {
   return (
@@ -33,6 +34,7 @@ function App() {
           <Route path="/sign-up" element={<Signup />} />
           <Route path="/about" element={<About />} />
           <Route path="/blog" element={<Blog />} />
+          <Route path="/location" element={<Location/>}/>
           <Route path="/crowdfunding" element={<Crowdfunding />} />
           <Route path="/report" element={<Report />} />
           <Route path="*" element={<Error />} />
