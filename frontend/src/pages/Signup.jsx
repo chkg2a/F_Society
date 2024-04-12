@@ -43,10 +43,18 @@ const Signup = () => {
   };
 
   return (
-    <div className="h-[80%] flex justify-center items-center">
-      <div className="flex flex-col items-center justify-center min-w-96 mx-auto">
+
+    <div className="relative h-screen w-screen flex justify-center items-center" 
+      style={{
+        backgroundImage: "url(/cat2.jpg)",
+        backgroundRepeat: "no-repeat",
+        backgroundPosition: "center",
+        backgroundSize: "cover",
+      }}
+    >
+      <div className="min-w-10 lg:absolute lg:top-36 lg:right-60">
         <div className="w-full p-6 rounded-lg shadow-md bg-gray-400 bg-clip-padding backdrop-filter backdrop-blur-lg bg-opacity-0">
-          <h1 className="text-3xl font-semibold text-center text-gray-300">
+          <h1 className="text-5xl font-semibold text-center text-gray-300">
             Signup
             <span className="text-blue-300">Animal Rescue</span>
           </h1>
@@ -59,7 +67,7 @@ const Signup = () => {
                 type="text"
                 id="username"
                 placeholder="Enter username"
-                className="w-full input input-bordered h-10"
+                className="w-full input input-bordered h-15"
                 onChange={handleChange}
               />
             </div>
@@ -71,13 +79,13 @@ const Signup = () => {
                 type="text"
                 id="email"
                 placeholder="Enter email"
-                className="w-full input input-bordered h-10"
+                className="w-full input input-bordered h-15"
                 onChange={handleChange}
               />
             </div>
             <div>
               <label className="label p-2">
-                <span className="text-base text-blue-300 label-text">
+                <span className="text-base label-text">
                   Password
                 </span>
               </label>
@@ -85,7 +93,7 @@ const Signup = () => {
                 type="password"
                 id="password"
                 placeholder="Enter password"
-                className="w-full input input-bordered h-10"
+                className="w-full input input-bordered h-15"
                 onChange={handleChange}
               />
             </div>
@@ -95,11 +103,11 @@ const Signup = () => {
             >
               Already have an account?
             </Link>
-            <div>
+            <div className="flex w-full">
 
               <button
                 disabled={loading}
-                className="btn btn-block btn-sm mt-2 border disabled:opacity-80 border-slate-700"
+                className="btn btn-block  btn-sm mt-2 border disabled:opacity-80 border-slate-700"
               >
                 {loading ? 'Loading...' : 'Sign Up'}
               </button>
