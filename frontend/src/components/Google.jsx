@@ -4,6 +4,7 @@ import { getAuth, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { useDispatch } from "react-redux";
 import { signInSuccess } from "../redux/userSlice";
 import { useNavigate } from "react-router-dom";
+
 const Google = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();

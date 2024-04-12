@@ -3,7 +3,7 @@ import { IoIosNotifications } from "react-icons/io";
 
 const Notification = () => {
   return (
-    <div class="btn">
+    <div className="btn">
       <IoIosNotifications/>      
     </div>
   )
