@@ -1,5 +1,6 @@
 import React from "react";
-import {Link} from "react-router-dom"
+import { Link } from "react-router-dom";
+import Timeline from "../components/timeline/Timeline";
 
 const Home = () => {
   return (
@@ -8,8 +9,7 @@ const Home = () => {
         <div
           className="hero min-h-screen"
           style={{
-            backgroundImage:
-              "url(/hero.webp)",
+            backgroundImage: "url(/hero.webp)",
           }}
         >
           <div className="hero-overlay bg-opacity-60"></div>
@@ -24,6 +24,9 @@ const Home = () => {
               <Link to="/report" className="btn btn-error">REPORT</Link>
             </div>
           </div>
+        </div>
+        <div className="w-[80vw] flex items-center justify-center">
+          <Timeline/>
         </div>
       </div>
     </>

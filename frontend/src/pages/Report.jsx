@@ -11,6 +11,7 @@ import {
   uploadBytesResumable,
 } from "firebase/storage";
 import React from "react";
+import Friends from "../assets/images/friends.svg"
 
 const Report = () => {
   const { loading, error } = useSelector((state) => state.user);
@@ -76,6 +77,10 @@ const Report = () => {
   return (
     <div className="bg-slate-700 w-screen h-screen flex-col flex items-center justify-center">
       <div className="h-[80%] flex justify-center items-center">
+        <div>
+          <img src={Friends}/>
+        </div>
+
         <div className="flex flex-col items-center justify-center min-w-96 mx-auto">
           <div className="w-full p-6 rounded-lg shadow-md bg-gray-400 bg-clip-padding backdrop-filter backdrop-blur-lg bg-opacity-0">
             <h1 className="text-3xl font-semibold text-center text-gray-300">
