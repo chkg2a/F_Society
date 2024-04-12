@@ -1,4 +1,5 @@
 const Organisation = (props) => {
+  console.log(props)
   return (
     <div className="card card-compact w-96 bg-base-100 shadow-xl">
       <figure>
