@@ -7,6 +7,7 @@ const Organisations = () => {
   let [provider,signer,selectedAccount,contract] = [null,null,null,null];
   const [orgs,setOrgs]=useState([]);
   const [data,setData] = useState([]);
+  const [account, setAccount] = useState()
   useEffect(()=>{
     handleWallet()
   },[])
@@ -22,6 +23,7 @@ const Organisations = () => {
       }
       provider=new ethers.BrowserProvider(window.ethereum);
       const contractAddress="0x58105f09ac9ad5aae92dd62e7aa8f0aadc8c79e1";
+      setAccount(selectedAccount)
       signer=await provider.getSigner();
       contract=new Contract(contractAddress,ABI,signer);
      const data=await contract.getAllOrgs();
@@ -34,11 +36,26 @@ const Organisations = () => {
     }
   }
   
- 
+  
   console.log(orgs)
   return (
-    <div className="w-screen flex items-center flex-col">
-    <div className="w-1/2 my-16 items-center flex flex-col justify-center">
+    <div className="p-20 relative w-screen flex items-center flex-col">
+
+      <div className="absolute mt-5 mr-5 top-0 text-slate-600 right-0">
+        {account
+          ? (
+            <h1 className="font-bold">Connected Account: {account}</h1>
+          )
+          : (
+            <button
+              onClick={handleWallet}
+              className="btn btn-block btn-sm mt-2 border disabled:opacity-80 border-slate-700"
+            >
+              Connect Wallet
+            </button>
+          )}
+      </div>
+    <div className="my-16 items-center flex flex-col justify-center">
       <h1 className="font-bold text-7xl">Together we can save these</h1>
       <h2 className="text-red-200 text-5xl mt-1 font-semibold">Precious Animals</h2>
     </div>
@@ -46,14 +63,13 @@ const Organisations = () => {
       {orgs.map((org, index) => (
         <Organisation
           key={index}
-          image={org[4]}
+          image={org[4] ? org[4] : "/who.png"}
           title={org[1]}
           description={org[2]}
           wallet={org[3]}
         />
       ))}
     </div>
-    <button onClick={handleWallet}>Connect Wallet</button>
   </div>
       );
     };

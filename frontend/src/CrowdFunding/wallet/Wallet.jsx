@@ -58,10 +58,10 @@ const Wallet = ({ children }) => {
             </button>
           )}
       </div>
-      <div className="h-[80%] flex justify-center items-center">
-        <div className="flex flex-col items-center justify-center min-w-[50rem] mx-auto">
+      <div className="ml-20 h-[80%] flex justify-start">
+        <div className="min-w-[40rem]">
           <div className="w-full p-6 rounded-lg shadow-md bg-gray-400 bg-clip-padding backdrop-filter backdrop-blur-lg bg-opacity-0">
-            <h1 className="text-6xl font-semibold text-center text-gray-300">
+            <h1 className="text-5xl font-semibold text-center text-gray-300">
               Join Organization
             </h1>
             <form onSubmit={handleSubmit}>
@@ -110,6 +110,14 @@ const Wallet = ({ children }) => {
                   className="w-full input input-bordered h-10"
                   required
                 />
+              </div>
+              <div>
+                <label className="label p-2">
+                  <span className="text-xl label-text">
+                    Your Organization Logo URL
+                  </span>
+                </label>
+
                 <input
                 type="text"
                 placeholder="Image Url"
@@ -124,17 +132,17 @@ const Wallet = ({ children }) => {
                   ? (
                     <button
                       type="submit"
-                      className="btn btn-block btn-sm mt-2 border disabled:opacity-80 border-slate-700"
+                      className="btn btn-block h-10 btn-sm mt-2 border disabled:opacity-80 border-slate-700"
                     >
-                      <span className="text-2xl">Add Organization</span>
+                      <span className="text-xl">Add Organization</span>
                     </button>
                   )
                   : (
                     <button
                       onClick={handleWallet}
-                      className="btn btn-block btn-sm mt-2 border disabled:opacity-80 border-slate-700"
+                      className="btn btn-block btn-sm h-10 mt-2 border disabled:opacity-80 border-slate-700"
                     >
-                      <span className="text-2xl">Connect Wallet</span>
+                      <span className="text-xl">Connect Wallet</span>
                     </button>
                   )}
               </div>

@@ -5,7 +5,7 @@ const Crowdfunding = () => {
   return (
     <div
       style={{
-        backgroundImage: "url(/crowd.jpeg)",
+        backgroundImage: "url(/dog.jpeg)",
         backgroundRepeat: "no-repeat",
         backgroundPosition: "center",
         backgroundSize: "cover",
