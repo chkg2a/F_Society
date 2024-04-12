@@ -8,6 +8,8 @@ import Report from "./pages/Report"
 import Crowdfunding from "./pages/Crowdfunding"
 import NavBar from "./components/navbar/NavBar"
 import ProtectedRoute from './components/ProtectedRoute';
+import Wallet from './CrowdFunding/wallet/Wallet';
+import Fund from './CrowdFunding/fund/Fund';
 function App() {
 
   return (
@@ -16,6 +18,8 @@ function App() {
     <NavBar/>
     <Routes>
       <Route path='/' element={<Home />} />
+      <Route path='/wallet' element={<Wallet />} />
+      <Route path='/fund' element={<Fund />} />
       <Route path='/sign-in' element={<Signin />} />
       <Route path='/sign-up' element={<Signup />} />
       <Route path='/about' element={<About />} />
