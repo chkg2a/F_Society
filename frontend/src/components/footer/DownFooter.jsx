@@ -4,7 +4,7 @@ const DownFooter = () => {
   return (
     <div className="w-full flex justify-between items-center gap-4">
       <div>
-        <Link to="/">DappChapp</Link>
+        <Link to="/">Animal Rescue</Link>
       </div>
       <div>
         <Link to="/signup" className="btn">SignUp</Link>
