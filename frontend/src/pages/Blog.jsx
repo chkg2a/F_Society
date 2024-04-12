@@ -1,9 +1,12 @@
-import React from 'react'
+import React from "react";
+import Posts from "../components/blog/Posts";
 
 const Blog = () => {
   return (
-    <div>Blog</div>
-  )
-}
+    <div className="w-screen">
+      <Posts />
+    </div>
+  );
+};
 
-export default Blog
+export default Blog;
