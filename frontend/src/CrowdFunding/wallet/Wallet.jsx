@@ -8,6 +8,7 @@ const Wallet = ({ children }) => {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [recipient, setRecipient] = useState("");
+  const [img,setImg]=useState("")
   const [state, setState] = useState({
     provider: null,
     selectedAccount: null,
@@ -33,7 +34,7 @@ const Wallet = ({ children }) => {
     e.preventDefault();
     const { contract } = state;
     try {
-      const tx = await contract.addOrg(name, description, recipient);
+      const tx = await contract.addOrg(name, description, recipient,img);
       await tx.wait();
     } catch (error) {
       console.log(error);
@@ -95,6 +96,14 @@ const Wallet = ({ children }) => {
                   className="w-full input input-bordered h-10"
                   required
                 />
+                <input
+                type="text"
+                placeholder="Image Url"
+                value={img}
+                onChange={(e) => setImg(e.target.value)}
+                className="w-full input input-bordered h-10"
+                required
+              />
               </div>
               <div>
                 {state.selectedAccount
