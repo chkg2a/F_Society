@@ -51,7 +51,7 @@ const Signin = () => {
           <form onSubmit={handleSubmit}>
             <div>
               <label className="label p-2">
-                <span className="text-base label-text">Username</span>
+                <span className="text-base label-text">Email</span>
               </label>
               <input
                 type="text"
@@ -69,7 +69,7 @@ const Signin = () => {
               </label>
               <input
                 type="password"
-                id="email"
+                id="password"
                 placeholder="Enter password"
                 className="w-full input input-bordered h-10"
                 onChange={handleChange}

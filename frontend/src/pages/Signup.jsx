@@ -53,12 +53,12 @@ const Signup = () => {
           <form onSubmit={handleSubmit}>
             <div>
               <label className="label p-2">
-                <span className="text-base label-text">Fullname</span>
+                <span className="text-base label-text">Username</span>
               </label>
               <input
                 type="text"
-                id="fullname"
-                placeholder="Enter fullname"
+                id="username"
+                placeholder="Enter username"
                 className="w-full input input-bordered h-10"
                 onChange={handleChange}
               />
@@ -83,7 +83,7 @@ const Signup = () => {
               </label>
               <input
                 type="password"
-                id="email"
+                id="password"
                 placeholder="Enter password"
                 className="w-full input input-bordered h-10"
                 onChange={handleChange}
