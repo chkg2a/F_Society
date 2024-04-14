@@ -8,7 +8,11 @@ import authRoutes from './routes/auth.router.js'
 dotenv.config();
 const port=process.env.PORT || 3000
 app.use(express.json());
-app.use(cors());
+const corsOption = {
+    credentials: true,
+    origin: ['https://f-society-client.vercel.app', 'http://localhost:3000']
+}
+app.use(cors(corsOption));
 app.use('/api/user',userRoutes);
 app.use('/api/auth',authRoutes);
 
