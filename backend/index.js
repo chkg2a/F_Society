@@ -19,6 +19,18 @@ app.use('/api/auth',authRoutes);
 app.use((err,req,res,next)=>{
   const statusCode=err.statusCode || 500;
   const message=err.message || "internal server error";
+
+  res.setHeader("Access-Control-Allow-Origin", "*"); // Allow requests from any origin
+  res.setHeader(
+    "Access-Control-Allow-Methods",
+    "GET, POST, PUT, PATCH, DELETE, OPTIONS"
+  );
+  res.setHeader(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requested-With, Content-Type, Accept, Authorization"
+  );
+
+
   return res.status(statusCode).json({
     success:false,
     statusCode,
