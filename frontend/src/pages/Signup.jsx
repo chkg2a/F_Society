@@ -17,7 +17,7 @@ const Signup = () => {
     e.preventDefault();
     setLoading(true); 
     try {
-      const res = await fetch('http://localhost:8000/api/auth/sign-up', {
+      const res = await fetch('https://f-society-backend.vercel.app/api/auth/sign-up', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

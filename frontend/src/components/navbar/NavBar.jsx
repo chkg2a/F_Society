@@ -9,7 +9,7 @@ const NavBar = () => {
   console.log(currentUser);
 
   const handleLogOut = async () => {
-    await fetch("http://localhost:8000/api/auth/logout");
+    await fetch("https://f-society-backend.vercel.app/api/auth/logout");
   };
 
   return (

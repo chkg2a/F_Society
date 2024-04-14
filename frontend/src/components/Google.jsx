@@ -13,7 +13,7 @@ const Google = () => {
       const auth = getAuth(app);
       const provider = new GoogleAuthProvider();
       const result = await signInWithPopup(auth, provider);
-      const res = await fetch("http://localhost:8000/api/auth/google", {
+      const res = await fetch("https://f-society-backend.vercel.app/api/auth/google", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

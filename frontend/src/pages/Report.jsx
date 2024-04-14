@@ -53,7 +53,7 @@ const Report = () => {
     e.preventDefault();
     console.log(formData);
     try {
-      const res = await fetch("http://localhost:8000/api/auth/alert", {
+      const res = await fetch("https://f-society-backend.vercel.app/api/auth/alert", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

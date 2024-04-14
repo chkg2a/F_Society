@@ -49,7 +49,7 @@ const Profile = () => {
   const handleSignout = async () => {
     try {
       dispatch(signOutUserStart());
-      const res = await fetch("http://localhost:8000/api/auth/sign-out");
+      const res = await fetch("https://f-society-backend.vercel.app/api/auth/sign-out");
       const data = await res.json();
       if (data.success === false) {
         dispatch(deleteUserFailure(data.message));
