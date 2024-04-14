@@ -12,7 +12,7 @@ const corsOption = {
     credentials: true,
     origin: ['https://f-society-client.vercel.app', 'http://localhost:3000']
 }
-app.use(cors(corsOption));
+app.use(cors());
 app.use('/api/user',userRoutes);
 app.use('/api/auth',authRoutes);
 
